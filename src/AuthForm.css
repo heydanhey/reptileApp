@@ -1,0 +1,11 @@
+h3 {
+  text-align: center;
+  padding: 1em;
+  background-color: #34495e;
+  color: #fff !important;
+  border-radius: 0.25rem;
+}
+
+.gray-out {
+  opacity: .6;
+}

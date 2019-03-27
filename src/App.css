@@ -1,0 +1,77 @@
+.title {
+  text-align: center;
+}
+
+.App button {
+  margin: 0 auto;
+  display: block;
+}
+
+.App ol {
+  list-style-position: inside;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.custom-nav {
+  /* background-color: #f2f2f2; */
+  background-color: #fff;
+  display: flex;
+  border-bottom: #c2c2c2 1px solid;
+}
+
+.custom-nav a {
+  padding: .4em;
+  width: 8%;
+  text-align: center;
+}
+.custom-nav a:hover {
+  background-color: #0069d9;
+  color: #fff !important;
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.addtask-banner {
+  text-align: center;
+  padding: 1em;
+  background-color: #31B3DA;
+  color: #fff !important;
+  border-radius: 0.25rem;
+}
+
+.addtask-input {
+  border: 1px solid gray !important;
+}
+
+.title {
+  background: #31B3DA;
+  margin: 0;
+  padding: 20px;
+  color: white;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

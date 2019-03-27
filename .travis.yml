@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - npm test
+  - npm run build
+deploy:
+  provider: firebase
+  token:
+    secure: process.env.REACT_APP_DEV_FIREBASE_TOKEN
+  local_dir: build
+  on:
+    branch: dev
