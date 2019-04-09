@@ -4,7 +4,7 @@ import './App.css';
 import firebase from './firebase';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-import ReactChartkick, { BarChart } from 'react-chartkick'
+import ReactChartkick, { ColumnChart } from 'react-chartkick'
 import Chart from 'chart.js'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 ReactChartkick.addAdapter(Chart)
@@ -98,7 +98,7 @@ class Home extends Component {
               }
               {
                 this.state.fav_reptile && (
-                  <BarChart
+                  <ColumnChart
                     data={
                       Object.keys(chartData).map((key) => {
                         return [key, chartData[key]]
