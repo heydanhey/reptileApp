@@ -6,7 +6,7 @@ import reptiles from './reptiles.json'
 class Add extends Component {
 
   state = {
-    selected: ''
+    selected: []
   }
 
   showAlert(){
@@ -16,7 +16,7 @@ class Add extends Component {
   add = () => {
     this.props.add(this.state.selected.pop())
     this.setState({
-      selected: ''
+      selected: []
     })
   }
 
