@@ -1,6 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection } from 'firebase/firestore/lite';
 
 var config = {
   apiKey: process.env.REACT_APP_DEV_FIREBASE_KEY,
@@ -10,6 +9,5 @@ var config = {
   storageBucket: "",
   messagingSenderId: process.env.REACT_APP_DEV_MESSENGINGSENDER_KEY
 };
-firebase.initializeApp(config);
-
-export default firebase;
+const app = initializeApp(config);
+export const db = getFirestore(app);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Add from './Add';
 import './App.css';
-import firebase from './firebase';
+import { db } from './firebase';
+import { collection, getDocs, addDoc } from 'firebase/firestore/lite';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import ReactChartkick, { ColumnChart } from 'react-chartkick'
@@ -23,17 +24,14 @@ class Home extends Component {
 
   componentDidMount() {
     const fav_reptile = localStorage.getItem('fav_reptile')
-    firebase.firestore().collection('reptiles').onSnapshot(snapshot => {
-      let reptiles = [];
-      snapshot.forEach(doc => {
-        reptiles.push(doc.data());
-      })
+    const col = collection(db, 'reptiles');
+    getDocs(col).then(snapshot => {
+      const reptiles = snapshot.docs.map(doc => doc.data());
       this.setState({
         reptiles: reptiles,
         fav_reptile: JSON.parse(fav_reptile)
       });
-      console.log(reptiles)
-    })
+    });
   }
 
   handleChange = (value) => {
@@ -48,7 +46,8 @@ class Home extends Component {
   add = (reptile) => {
     let id = new Date().getTime().toString()
     localStorage.setItem('fav_reptile', JSON.stringify(reptile))
-    firebase.firestore().collection('reptiles').doc(id).set({
+
+    addDoc(collection(db, 'reptiles'), {
       reptile: reptile,
       id: id
     }).then(() => {
@@ -59,14 +58,6 @@ class Home extends Component {
     }).catch((error) => {
       console.log("error adding document", error)
     })
-  }
-
-  remove = (id) => {
-    firebase.firestore().collection('reptiles').doc(id).delete().then(() => {
-      console.log("Document successfully deleted!");
-    }).catch((error) => {
-      console.error("Error removing document: ", error);
-    });
   }
 
   render() {
@@ -102,12 +93,12 @@ class Home extends Component {
                     <>
                       <p className="p-2" style={{color:'grey'}}> Current favorite: {this.state.fav_reptile.name } </p>
 
-                      <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                          <button name="chart" class={`nav-link ${this.state.tab === 'chart' ? 'active' : ''}`} onClick={this.handleTabClick}>Chart</button>
+                      <ul className="nav nav-tabs">
+                        <li className="nav-item">
+                          <button name="chart" className={`nav-link ${this.state.tab === 'chart' ? 'active' : ''}`} onClick={this.handleTabClick}>Chart</button>
                         </li>
-                        <li class="nav-item">
-                          <button name="table" class={`nav-link ${this.state.tab === 'table' ? 'active' : ''}`} onClick={this.handleTabClick}>Table</button>
+                        <li className="nav-item">
+                          <button name="table" className={`nav-link ${this.state.tab === 'table' ? 'active' : ''}`} onClick={this.handleTabClick}>Table</button>
                         </li>
                       </ul>
 
@@ -117,7 +108,7 @@ class Home extends Component {
                         transitionLeaveTimeout={300}
                       >
                         { this.state.tab === 'chart' && (
-                          <div class="mt-4">
+                          <div className="mt-4">
                             <ColumnChart
                               data={
                                 Object.keys(chartData).map((key) => {
@@ -131,7 +122,7 @@ class Home extends Component {
 
                         {
                           this.state.tab === 'table' && (
-                            <table class="table table-dark"> 
+                            <table className="table table-dark"> 
                               <thead>
                                 <tr>
                                   <th>Reptile</th>
