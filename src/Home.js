@@ -75,7 +75,7 @@ class Home extends Component {
         <NotificationContainer/>
         <div className="container">
           <div className="jumbotron" style={{backgroundColor: 'transparent'}}>
-            <h1 style={{color:'white'}}>What is your favorite reptile?</h1>
+            <h1 style={{color:'white'}}> &#128010; What is your favorite reptile?</h1>
 
             <Add
               inputValue={this.state.inputValue}
@@ -90,7 +90,7 @@ class Home extends Component {
               >
                 {
                   this.state.fav_reptile && (
-                    <>
+                    <div>
                       <p className="p-2" style={{color:'grey'}}> Current favorite: {this.state.fav_reptile.name } </p>
 
                       <ul className="nav nav-tabs">
@@ -102,11 +102,6 @@ class Home extends Component {
                         </li>
                       </ul>
 
-                      <ReactCSSTransitionGroup
-                        transitionName="example"
-                        transitionEnterTimeout={400}
-                        transitionLeaveTimeout={300}
-                      >
                         { this.state.tab === 'chart' && (
                           <div className="mt-4">
                             <ColumnChart
@@ -142,8 +137,7 @@ class Home extends Component {
                             </table>
                           )
                         }
-                      </ReactCSSTransitionGroup>
-                    </>
+                    </div>
                   )
                 }
             </ReactCSSTransitionGroup>
