@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
-import Home from './Home';
-
+import React, { Component } from "react";
+import "./App.css";
+import Home from "./Home";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -14,8 +13,8 @@ class App extends Component {
       <div>
         <Home />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

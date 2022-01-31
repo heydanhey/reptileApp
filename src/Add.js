@@ -1,24 +1,23 @@
-import React, { Component , Fragment } from 'react';
-import { Typeahead } from 'react-bootstrap-typeahead';
-import 'react-bootstrap-typeahead/css/Typeahead.css';
-import reptiles from './reptiles.json'
+import React, { Component, Fragment } from "react";
+import { Typeahead } from "react-bootstrap-typeahead";
+import "react-bootstrap-typeahead/css/Typeahead.css";
+import reptiles from "./reptiles.json";
 
 class Add extends Component {
-
   state = {
-    selected: []
-  }
+    selected: [],
+  };
 
-  showAlert(){
+  showAlert() {
     window.alert("Please add task");
   }
 
   add = () => {
-    this.props.add(this.state.selected.pop())
+    this.props.add(this.state.selected.pop());
     this.setState({
-      selected: []
-    })
-  }
+      selected: [],
+    });
+  };
 
   render() {
     return (
@@ -29,12 +28,15 @@ class Add extends Component {
             selectHintOnEnter
             minLength={3}
             labelKey="name"
-            options={reptiles.map(reptile => {
-              const name = reptile.Common_name.split('\n').shift().split(',').shift()
-              return { name: name, species: reptile.Species }
+            options={reptiles.map((reptile) => {
+              const name = reptile.Common_name.split("\n")
+                .shift()
+                .split(",")
+                .shift();
+              return { name: name, species: reptile.Species };
             })}
             placeholder="Choose a reptile..."
-            onChange={(s) => this.setState({selected: s})}
+            onChange={(s) => this.setState({ selected: s })}
             selected={this.state.selected}
             renderMenuItemChildren={(option) => (
               <div>
@@ -47,7 +49,9 @@ class Add extends Component {
           />
         </div>
         <div className="col-1">
-          <button className="btn btn-outline-light" onClick={this.add}>Enter</button>
+          <button className="btn btn-outline-light" onClick={this.add}>
+            Enter
+          </button>
         </div>
       </div>
     );

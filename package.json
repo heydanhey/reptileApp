@@ -8,7 +8,7 @@
     "chart.js": "^2.8.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "firebase": "^9.6.4",
+    "firebase": "^9.6.5",
     "firebase-tools": "^10.1.2",
     "grpc": "^1.24.11",
     "materialize-css": "^1.0.0",
@@ -36,12 +36,21 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "firebase-ci": "^0.4.6"
+    "eslint-config-prettier": "^8.3.0",
+    "firebase-ci": "^0.4.6",
+    "prettier": "^2.5.1"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "eslintConfig": { 
+    "extends": [ 
+      "react-app", 
+      "react-app/jest", 
+      "prettier" 
+    ] 
+  }
 }
